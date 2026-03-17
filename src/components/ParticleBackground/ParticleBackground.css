@@ -1,0 +1,16 @@
+.particle-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1; /* Above basic body color */
+  pointer-events: none;
+  background: transparent; /* No background here, stay transparent */
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+  opacity: 0.8;
+}

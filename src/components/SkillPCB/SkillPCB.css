@@ -1,0 +1,223 @@
+.skills-section {
+  padding: 8rem 2rem;
+  display: flex;
+  justify-content: center;
+  background: var(--bg-primary);
+  position: relative;
+  z-index: 5;
+}
+
+.skills-container {
+  width: 100%;
+  max-width: var(--max-width);
+  height: 600px;
+  background: radial-gradient(circle at center, #1a1a22 0%, #0a0a0c 100%);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+
+.pcb-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid var(--bg-tertiary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.override-btn {
+  background: transparent;
+  border: 1px solid var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+  padding: 0.4rem 1rem;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.override-btn:hover {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  box-shadow: 0 0 15px var(--accent-cyan-dim);
+  border-color: var(--accent-cyan);
+}
+
+.pcb-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+
+.pcb-leds {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.p-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.p-led.green { background: #00ff00; box-shadow: 0 0 5px #00ff00; }
+.p-led.yellow { background: #ffff00; box-shadow: 0 0 5px #ffff00; animation: blink 0.8s infinite; }
+.p-led.blue { background: #00f3ff; box-shadow: 0 0 5px #00f3ff; }
+
+.pcb-grid {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.pcb-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.skill-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.node-content {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 120px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s ease;
+}
+
+.skill-node:hover .node-content {
+  border-color: var(--accent-cyan);
+}
+
+.skill-node:hover .node-content::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 1px solid var(--accent-cyan-dim);
+  z-index: -1;
+}
+
+.skill-name {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.skill-bar-mini {
+  height: 3px;
+  background: var(--bg-primary);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.skill-bar-mini .fill {
+  height: 100%;
+  background: var(--accent-cyan);
+}
+
+.pcb-footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.footer-meta {
+  display: flex;
+  gap: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+.rocket-navigation {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  color: var(--accent-cyan);
+}
+
+.rocket-navigation:hover {
+  border-color: var(--accent-cyan-dim);
+  background: rgba(0, 243, 255, 0.05);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+}
+
+.rocket-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rocket-icon {
+  transform: rotate(-45deg);
+  filter: drop-shadow(0 0 5px var(--accent-cyan));
+}
+
+.engine-flame {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 6px;
+  height: 12px;
+  background: #ffaa00;
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: rocketFlicker 0.15s infinite alternate;
+  transform: rotate(-135deg);
+}
+
+@keyframes rocketFlicker {
+  from { opacity: 0.6; transform: rotate(-135deg) scale(0.8); }
+  to { opacity: 1; transform: rotate(-135deg) scale(1.2); }
+}
+
+.rocket-navigation span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    height: auto;
+    min-height: 800px;
+  }
+}
